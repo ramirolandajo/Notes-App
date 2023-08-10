@@ -7,6 +7,7 @@ function Popup(props) {
         <div className="inner-popup">
           <img src={closeButton} className="close-btn" onClick={() => props.setTrigger(false)} alt="Close Btn"/>
           {props.children}
+          <h2 className="popup-title">Add new note</h2>
           <form>
             <div className="form-title">
               <label>Title</label>
@@ -14,11 +15,13 @@ function Popup(props) {
             </div>
             <div className="form-content">
               <label>Content</label>
-              <textarea id="note-content" name="note-content" placeholder="Note about something..."></textarea>
+              <textarea id="note-content-txtf" name="note-content" placeholder="Note about something..."></textarea>
+            </div>
+            <div className="form-buttons">
+              <button className="btn box-shw btn-cancel">Cancel</button>
+              <button className="btn box-shw btn-confirm">Confirm</button>
             </div>
           </form>
-          <button className="btn box-shw" id="btn-cancel">Cancel</button>
-          <button className="btn box-shw" id="btn-confirm">Confirm</button>
         </div>
     </div>
   ) : "";

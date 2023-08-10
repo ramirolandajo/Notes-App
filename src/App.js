@@ -1,36 +1,18 @@
 import React from "react"
-import { useState } from "react";
 import "./App.css"
-import Navbar from "./components/Navbar";
-import Popup from "./components/Popup";
-import addNoteImg from "./images/add-icon.png"
-import archiveImage from "./images/archive-icon.png"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import Home from "./components/Home";
+import ArchivedNotes from "./components/ArchivedNotes";
 
 function App() {
-  const [btnPopup, setBtnPopup] = useState(false);
-
   return (  
     <div>
-      <Navbar />
-      <Popup />
-      <main>
-        <div className="secondary-bar">
-          <h2>My Notes</h2>
-          <div className="div-buttons">
-            {/* Archive Button */}
-            <button className="box-shw btn" id="btn-archive">
-              <img src={archiveImage} alt="img"/>
-              Archive
-            </button>
-            {/* Add Note Button */}
-            <button className="box-shw btn" id="btn-add-note" onClick={() => setBtnPopup(true)}>
-              <img src={addNoteImg} alt="img" />
-              Note
-            </button>    
-          </div>
-        </div>
-        <Popup trigger={btnPopup} setTrigger={setBtnPopup}/>
-      </main>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={ <Home />}/>
+          <Route path="/archived" element={ <ArchivedNotes />}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

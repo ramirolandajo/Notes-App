@@ -1,0 +1,39 @@
+import React from 'react'
+import { useState } from "react";
+import Navbar from "./Navbar";
+import Popup from "./Popup";
+import addNoteImg from "../images/add-icon.png"
+import archiveImage from "../images/archive-icon.png"
+import { Link } from 'react-router-dom';
+
+export default function Home() {
+  const [btnPopup, setBtnPopup] = useState(false);
+
+  return (
+    <div>
+        <Navbar/>
+        <Popup />
+        <main>
+        <div className="secondary-bar">
+            <h2>My Notes</h2>
+            <div className="div-buttons">
+            {/* Archive Button */}
+                <Link to="/archived">
+                    <button className="box-shw btn" id="btn-archive">
+                        <img src={archiveImage} alt="img"/>
+                        Archive
+                    </button>
+                </Link>
+            {/* Add Note Button */}
+            <button className="box-shw btn" id="btn-add-note" onClick={() => setBtnPopup(true)}>
+                <img src={addNoteImg} alt="img" />
+                Note
+            </button>    
+            </div>
+        </div>
+        {/* create note Popup */}
+        <Popup trigger={btnPopup} setTrigger={setBtnPopup}/>
+        </main>
+    </div>
+    )
+}
