@@ -1,18 +1,16 @@
-package controllers;
+package com.landajo.notesapp.controllers;
 
-import lombok.AllArgsConstructor;
-import models.NoteModel;
+import com.landajo.notesapp.models.NoteModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.NoteService;
+import com.landajo.notesapp.services.NoteService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/note")
-@AllArgsConstructor
 public class NoteController {
 
     @Autowired
@@ -20,7 +18,7 @@ public class NoteController {
 
     @PostMapping(path = "/")
     public ResponseEntity<NoteModel> createNote(@RequestBody NoteModel newNote) {
-        return new ResponseEntity<>(this.noteService.createNote(newNote), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.noteService.createNote(newNote), HttpStatus.OK);
     }
     @PutMapping(path = "/{id}")
     public ResponseEntity<NoteModel> updateNote(@RequestBody NoteModel note, @PathVariable Long id) throws Exception {
