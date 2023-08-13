@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from "../images/post-it-icon.png"
+import icon from '../images/post-it-icon.png'
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {

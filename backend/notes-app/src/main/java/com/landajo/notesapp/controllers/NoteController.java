@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/note")
+@CrossOrigin(origins = "*")
 public class NoteController {
 
     @Autowired

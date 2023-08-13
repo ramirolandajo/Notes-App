@@ -1,18 +1,18 @@
-import React from "react"
-import "./App.css"
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Home from "./components/Home";
-import ArchivedNotes from "./components/ArchivedNotes";
+import React from 'react'
+import './App.css'
+import {HashRouter, Route, Routes} from 'react-router-dom'
+import Home from './pages/Home';
+import ArchivedNotes from './pages/ArchivedNotes';
 
 function App() {
   return (  
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={ <Home />}/>
           <Route path="/archived" element={ <ArchivedNotes />}/>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

@@ -14,10 +14,10 @@ USE `notes-db` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `notes-schema`.`Notes` (
   `idNotes` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(100) NULL,
-  `content` MEDIUMTEXT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `content` MEDIUMTEXT NOT NULL,
   `created_at` DATETIME NOT NULL,
-  `archived` TINYINT NULL,
+  `archived` TINYINT NOT NULL DEFAULT false,
   PRIMARY KEY (`idNotes`))
 ENGINE = InnoDB;
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useState } from "react";
-import Navbar from "./Navbar";
-import Popup from "./Popup";
-import addNoteImg from "../images/add-icon.png"
-import archiveImage from "../images/archive-icon.png"
+import { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Popup from '../components/Popup';
+import addNoteImg from '../images/add-icon.png';
+import archiveImage from '../images/archive-icon.png';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
