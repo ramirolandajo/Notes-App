@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Popup from '../components/Popup';
 import addNoteImg from '../images/add-icon.png';
 import archiveImage from '../images/archive-icon.png';
 import { Link } from 'react-router-dom';
+import Note from '../components/Note';
 
 export default function Home() {
   const [btnPopup, setBtnPopup] = useState(false);
+  const [notes, setNotes] = useState([])
+  
+  useEffect(()=>{
+    fetch("http://localhost:8080/api/note/getAll")
+    .then(res=>res.json())
+    .then((result)=>{
+        setNotes(result);
+    }
+    )
+  },[])
 
   return (
     <div>
@@ -24,13 +35,18 @@ export default function Home() {
                         Archive
                     </button>
                 </Link>
-            {/* Add Note Button */}
-            <button className="box-shw btn" id="btn-add-note" onClick={() => setBtnPopup(true)}>
-                <img src={addNoteImg} alt="img" />
-                Note
-            </button>    
+                {/* Add Note Button */}
+                <button className="box-shw btn" id="btn-add-note" onClick={() => setBtnPopup(true)}>
+                    <img src={addNoteImg} alt="img" />
+                    Note
+                </button>
             </div>
         </div>
+        <section className="notes-section">
+            {notes.map(note=>(
+                <Note noteId={note.id} noteTitle={note.title} noteContent={note.content}/>
+            ))}
+        </section>
         {/* create note Popup */}
         <Popup trigger={btnPopup} setTrigger={setBtnPopup}/>
         </main>

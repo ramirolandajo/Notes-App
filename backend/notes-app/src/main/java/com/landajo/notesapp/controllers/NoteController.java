@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import com.landajo.notesapp.services.NoteService;
 
 import java.util.List;
-
+@CrossOrigin()
 @RestController
 @RequestMapping(path = "api/note")
-@CrossOrigin(origins = "*")
 public class NoteController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class NoteController {
     public ResponseEntity<NoteModel> updateNote(@RequestBody NoteModel note, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(this.noteService.updateNote(note, id), HttpStatus.OK);
     }
-    @GetMapping(path = "/")
+    @GetMapping(path = "/getAll")
     public ResponseEntity<List<NoteModel>> findAllNotes(){
         return new ResponseEntity<>(this.noteService.findAllNotes(), HttpStatus.OK);
     }

@@ -10,7 +10,7 @@ function Popup(props) {
     e.preventDefault()
     const note = {title, content}
     console.log(title, content)
-    fetch("http://localhost:8080/api/note", {
+    fetch("http://localhost:8080/api/note/", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(note)
