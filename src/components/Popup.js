@@ -59,8 +59,8 @@ function Popup(props) {
                 />
             </div>
             <div className="form-buttons">
-                <button className="btn box-shw btn-cancel" onClick={handleExit}>Cancel</button>
-                <button className="btn box-shw btn-confirm" onClick={handleClick}>Confirm</button>
+                <button className="btn box-shw btn-red" onClick={handleExit}>Cancel</button>
+                <button className="btn box-shw btn-green" onClick={handleClick}>Confirm</button>
             </div>
           </form>
         </div>

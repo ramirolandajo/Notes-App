@@ -93,6 +93,10 @@ main {
     background-color: #FFF;
     border: 2px solid #000;
 }
+.inner-delete-popup {
+    width: 30%;
+    padding: 2.5em;
+}
 .inner-popup .close-btn {
     position: absolute;
     top: 1em;
@@ -123,10 +127,10 @@ textarea {
     display: flex;
     justify-content: space-between;
 }
-.btn-cancel {
+.btn-red {
     background-color: #FF6262;
 }
-.btn-confirm {
+.btn-green {
     background-color: #5FFF65;
 }
 #btn-go-back {
