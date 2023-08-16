@@ -4,9 +4,11 @@ import editImg from '../images/edit-icon.png'
 import deleteImg from '../images/delete-icon.png'
 import EditPopup from '../components/EditPopup'
 import { useState } from 'react'
+import { useLocation } from 'react-router'
 
 export default function Note(props) {
   const [btnEditPopup, setBtnEditPopup] = useState(false);
+  const location = useLocation();
 
   const handleDeleteClick = (e) => {
     e.preventDefault()
@@ -21,16 +23,30 @@ export default function Note(props) {
 
   const handleArchiveClick = (e) => {
     e.preventDefault()
-    fetch("http://localhost:8080/api/note/"+props.noteId, {
-      method: "PUT",
-      headers: {"Content-Type": "application/json"},
-      body: '{"title": "'+props.noteTitle+'", "content": "'+props.noteContent+'", "archived": "true"}'
-
-    }).then(()=>{
-      alert("Note archived")
-      window.location.reload(true)
-      console.log("Note with id " + props.noteId + " archived")
-    })
+    if (location.pathname !== "/archived") {
+      fetch("http://localhost:8080/api/note/"+props.noteId, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: '{"title": "'+props.noteTitle+'", "content": "'+props.noteContent+'", "archived": "true"}'
+  
+      }).then(()=>{
+        alert ("Note archived")
+        window.location.reload(true)
+        console.log("Note with id " + props.noteId + " archived")
+      })
+    }
+    else {
+      fetch("http://localhost:8080/api/note/"+props.noteId, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: '{"title": "'+props.noteTitle+'", "content": "'+props.noteContent+'", "archived": "false"}'
+  
+      }).then(()=>{
+        alert ("Note unarchived")
+        window.location.reload(true)
+        console.log("Note with id " + props.noteId + " archived")
+      })
+    }
   }
 
   return (
