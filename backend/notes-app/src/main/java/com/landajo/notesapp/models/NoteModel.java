@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 public class NoteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idNotes")
-    private Long idNotes;
+    private Long idNote;
     private String title;
     private String content;
     private LocalDateTime created_at;

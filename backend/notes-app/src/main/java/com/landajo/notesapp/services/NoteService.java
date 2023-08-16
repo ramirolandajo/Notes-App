@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.landajo.notesapp.repositories.NoteRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,8 +49,26 @@ public class NoteService {
         }
     }
 
-    public List<NoteModel> findAllNotes() {
-        return this.noteRepository.findAll();
+    public List<NoteModel> findUnarchivedNotes() {
+        List<NoteModel> list = this.noteRepository.findAll();
+        List<NoteModel> unarchived = new ArrayList<>();
+        for (NoteModel note: list){
+            if (!note.isArchived()){
+                unarchived.add(note);
+            }
+        }
+        return unarchived;
+    }
+
+    public List<NoteModel> findArchivedNotes() {
+        List<NoteModel> list = this.noteRepository.findAll();
+        List<NoteModel> archived = new ArrayList<>();
+        for (NoteModel note: list) {
+            if (note.isArchived()){
+                archived.add(note);
+            }
+        }
+        return archived;
     }
 
     public void deleteNote(Long id) throws Exception {

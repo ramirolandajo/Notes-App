@@ -24,9 +24,13 @@ public class NoteController {
     public ResponseEntity<NoteModel> updateNote(@RequestBody NoteModel note, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(this.noteService.updateNote(note, id), HttpStatus.OK);
     }
-    @GetMapping(path = "/getAll")
-    public ResponseEntity<List<NoteModel>> findAllNotes(){
-        return new ResponseEntity<>(this.noteService.findAllNotes(), HttpStatus.OK);
+    @GetMapping(path = "/unarchived")
+    public ResponseEntity<List<NoteModel>> findUnarchivedNotes(){
+        return new ResponseEntity<>(this.noteService.findUnarchivedNotes(), HttpStatus.OK);
+    }
+    @GetMapping(path = "/archived")
+    public ResponseEntity<List<NoteModel>> findArchivedNotes(){
+        return new ResponseEntity<>(this.noteService.findArchivedNotes(), HttpStatus.OK);
     }
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> createNote(@PathVariable Long id) throws Exception {

@@ -12,7 +12,7 @@ export default function Home() {
   const [notes, setNotes] = useState([])
   
   useEffect(()=>{
-    fetch("http://localhost:8080/api/note/getAll")
+    fetch("http://localhost:8080/api/note/unarchived")
     .then(res=>res.json())
     .then((result)=>{
         setNotes(result);
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
         <section className="notes-section">
             {notes.map(note=>(
-                <Note noteId={note.id} noteTitle={note.title} noteContent={note.content}/>
+                <Note noteId={note.idNote} noteTitle={note.title} noteContent={note.content} noteArchived={note.archived} key={note.idNote}/>
             ))}
         </section>
         {/* create note Popup */}

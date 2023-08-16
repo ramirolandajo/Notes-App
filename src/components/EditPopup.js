@@ -2,27 +2,9 @@ import React from 'react'
 import closeButton from '../images/close-button.png'
 import { useState } from 'react';
 
-function Popup(props) {
+function EditPopup(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const handleClick=(e) => {
-    e.preventDefault()
-    const note = {title, content}
-    console.log(title, content)
-    fetch("http://localhost:8080/api/note/", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(note)
-    }).then(()=>{
-      window.location.reload(true)
-      console.log("New note added")
-    })
-
-    setTitle("")
-    setContent("")
-    props.setTrigger(false)
-  }
 
   const handleExit=(e) => {
     e.preventDefault()
@@ -31,11 +13,27 @@ function Popup(props) {
     setContent("")
   }
 
+  const handleClick=(e) => {
+    e.preventDefault()
+    fetch("http://localhost:8080/api/note/"+props.noteId, {
+      method: "PUT",
+      headers: {"Content-Type": "application/json"},
+      body: '{"title": "'+title+'", "content": "'+content+'", "archived": "'+props.noteArchived+'"}'
+    }).then(()=>{
+      window.location.reload(true)
+      console.log("Note edited")
+    })
+
+    setTitle("")
+    setContent("")
+    props.setTrigger(false)
+  }
+
   return (props.trigger) ? (
     <div className="popup">
         <div className="inner-popup">
           <img src={closeButton} className="close-btn" onClick={handleExit} alt="Close"/>
-          <h2 className="popup-title">Add new note</h2>
+          <h2 className="popup-title">Edit note</h2>
           <form>
             <div className="form-title">
                 <label>Title</label>
@@ -68,4 +66,4 @@ function Popup(props) {
   ) : "";
 }
 
-export default Popup
+export default EditPopup
