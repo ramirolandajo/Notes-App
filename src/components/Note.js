@@ -47,7 +47,7 @@ export default function Note(props) {
         <div className="div-note-images">
             <img src={archiveImg} alt="archive img" onClick={handleArchiveClick} className="note-images"/>
             <img src={editImg} alt="edit img" onClick={() => setBtnEditPopup(true)} className="note-images"/>
-            <img src={deleteImg} alt="delete img" onClick={() => setBtnDeletePopup(true)} className="note-images"/>
+            <img src={deleteImg} alt="delete img" onClick={() => setBtnConfirmDeletePopup(true)} className="note-images"/>
         </div>
         <EditPopup trigger={btnEditPopup} setTrigger={setBtnEditPopup} noteId={props.noteId} noteArchived={props.noteArchived}/>
         <ConfirmDeletePopup trigger={btnConfirmDeletePopup} setTrigger={setBtnConfirmDeletePopup} noteId={props.noteId}/>
