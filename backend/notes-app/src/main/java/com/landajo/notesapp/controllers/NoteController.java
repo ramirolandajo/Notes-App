@@ -35,6 +35,6 @@ public class NoteController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> createNote(@PathVariable Long id) throws Exception {
         this.noteService.deleteNote(id);
-        return new ResponseEntity<>("Note deleted successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Note deleted successfully", HttpStatus.OK);
     }
 }
